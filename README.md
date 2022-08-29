@@ -30,6 +30,22 @@ Actual time needed to complete: _____
 ## Credit and Collaborations
 Carlos Herrera
 
+### Logistical
+I will be available from 9 a.m. till midnight.
+Carlos and I will be using Slack as our primary communication device, as well as E-mail.
+We will take breaks every 45 min.
+We will first look for the answer on the internet, ask for help to our fellow classmates, then the TA's, and lastly, to Ms. Sheyna.
+
+### Cooperative
+I am good at Collaboration, UI styling, and CSS. Carlos is good at persistence, conceptual understanding at JavaScript.
+I want to improve in the technical and conceptual understanding in JavaScript, as well as troubleshooting.
+Have a morning standup to discuss the previous work day, have a mid day meet up to discuss our plan of attack, and the end of the day meet up to discuss the work done for the day, and to push and merge all commits.
+
+### Conflict resolution
+Have a one to one talk, and discuss the expecteation, and how the other one is falling behind.
+Bring light to the situation as to how the other one is not knowledgable in coding.
+That won't be a problem, for we are both on the same level of understanding in JavaScript.
+
 # Start your own "Can of Books" App
 
 This repository has starter code to begin work on creating your own online bookshelf.
