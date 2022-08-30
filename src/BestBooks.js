@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+let SERVER = process.env.REACT_APP_SERVER;
+
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +14,7 @@ class BestBooks extends React.Component {
   /* TODO: Make a GET request to your API to fetch all the books from the database  */
   getBooks = async () => {
     try {
-      let results = await axios.get(`${REACT_APP_SERVER}/books`);
+      let results = await axios.get(`${SERVER}/books`);
       this.setState({
         books: results.data
       });
@@ -48,7 +50,7 @@ class BestBooks extends React.Component {
         {this.state.books.length ? (
           <p>Book Carousel coming soon</p>
         ) : (
-          <h3>No Books Found :</h3>
+          <h3>Book colection is empty.</h3>
         )}
       </>
     )
