@@ -9,7 +9,18 @@ import {
   Route
 } from "react-router-dom";
 
+let SERVER = process.env.REACT_APP_SERVER;
+
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      books: []
+    }
+  }
+
+  
+
   render() {
     return (
       <>
