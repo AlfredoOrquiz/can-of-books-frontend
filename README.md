@@ -18,7 +18,8 @@
 08-30-2022 1600 - Lab 11 checklist is compleated. The list of books are rendering, and there are no bugs.
 
 ## Estimates
-Name of feature: Lab 11.- Building CRUD apps with MongoDB
+### Lab 11
+Name of feature: Building CRUD apps with MongoDB
 
 Estimate of time needed to complete: 6 hrs
 
@@ -27,6 +28,17 @@ Start time: 1415
 Finish time: 2000
 
 Actual time needed to complete: 5 hr and 15 min
+
+### Lab 12
+Name of feature: Resource Create and Delete
+
+Estimate of time needed to complete: 8 hrs
+
+Start time: 1430
+
+Finish time: _____
+
+Actual time needed to complete: _____
 
 ## Credit and Collaborations
 Carlos Herrera
