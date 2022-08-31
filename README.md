@@ -13,6 +13,10 @@
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
+## Links
+Netlify: https://book-cans.netlify.app/
+Trello: https://trello.com/c/RxXHxSYT/10-2-delete-as-a-user-i-want-to-remove-books-from-my-list-so-that-only-the-most-important-books-are-on-my-shelf
+
 ## Change Log
 08-29-2022 1444 - There is proof of life on both front and back end.
 08-30-2022 1600 - Lab 11 checklist is compleated. The list of books are rendering, and there are no bugs.
@@ -36,9 +40,9 @@ Estimate of time needed to complete: 8 hrs
 
 Start time: 1430
 
-Finish time: _____
+Finish time: 2200
 
-Actual time needed to complete: _____
+Actual time needed to complete: 8 hrs and 30 min
 
 ## Credit and Collaborations
 Carlos Herrera

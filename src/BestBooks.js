@@ -40,8 +40,20 @@ class BestBooks extends React.Component {
     }
   }
 
-  
-  
+  handleDeleteBooks = async (id) => {
+    try {
+      let url = `${SERVER}/books/${id}`;
+      await axios.delete(id);
+      // this.getBooks();
+      let updatedBooks =this.state.books.filter(books => books._id !== id);
+      this.setState({
+        books: updatedBooks
+      });
+    } catch (error) {
+      console.log('Huston, we have another problem: ', error.response.data);
+    }
+  }
+
   /* TODO: Make a GET request to your API to fetch all the books from the database  */
   getBooks = async () => {
     try {
