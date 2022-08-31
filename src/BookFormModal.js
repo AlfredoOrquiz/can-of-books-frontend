@@ -10,6 +10,7 @@ class BookFormModal extends React.Component {
             <Form.Label >Title</Form.Label>
             <Form.Control type='text' name='title' placeholder='Enter a book name' />
           </Form.Group>
+          
           <Form.Group className='mb-3' controlId='description'>
             <Form.Label>Description</Form.Label>
             <Form.Control type='text' name='description' placeholder='Enter the description' />
@@ -18,6 +19,7 @@ class BookFormModal extends React.Component {
           <Form.Group className='mb-3' controlId='checkBox'>
             <Form.Check type='checkbox' name='checkBox' label='Read' />
           </Form.Group>
+
           <Button onClick={this.props.onHide} variant='outline-primary' type='submit'>
             Submit
           </Button>
