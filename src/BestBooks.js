@@ -43,12 +43,13 @@ class BestBooks extends React.Component {
   }
 
   handleDeleteBooks = async (id) => {
+    console.log(id);
     try {
       let url = `${SERVER}/books/${id}`;
       await axios.delete(url);
-      let updatedBooks =this.state.books.filter(books => books._id !== id);
+      let deletedBooks =this.state.books.filter(books => books._id !== id);
       this.setState({
-        books: updatedBooks
+        books: deletedBooks
       });
     } catch (error) {
       console.log('Huston, we have another problem: ', error.response.data);
@@ -81,8 +82,6 @@ class BestBooks extends React.Component {
   }
 
   render() {
-
-    /* TODO: render all the books in a Carousel */
     let booksArr = this.state.books.map(book => {
       return <Carousel.Item key={book._id}>
           <img
@@ -94,6 +93,12 @@ class BestBooks extends React.Component {
             <h3>{book.title}</h3>
             <p>{book.description}</p>
             <p>{book.status}</p>
+            <Button onClick={() => {
+              this.handleDeleteBooks(book._id)}}
+              type='submit'
+              variant='outline-danger'>
+                Delete
+            </Button>
           </Carousel.Caption>
         </Carousel.Item>
     });
@@ -106,12 +111,10 @@ class BestBooks extends React.Component {
       </Carousel>
       <BookFormModal
       handleAddBook={this.handleAddBook}
-      handleDeleteBooks={this.handleDeleteBooks}
       show={this.state.show}
       onHide={this.handleModal}
       />
       <Button onClick={this.handleModal} variant='outline-primary'>Add book</Button>
-      <Button onClick={this.handleDeleteBooks} type='submit' variant='outline-danger'>Delete</Button>
 
         <main>
           {
