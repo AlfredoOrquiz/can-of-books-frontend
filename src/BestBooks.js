@@ -3,8 +3,6 @@ import axios from 'axios';
 import Button  from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
 import BookFormModal from './BookFormModal.js';
-// import Form from 'react-bootstrap/Form';
-// import Modal from 'react-bootstrap/Modal';
 
 let SERVER = process.env.REACT_APP_SERVER;
 
@@ -15,6 +13,10 @@ class BestBooks extends React.Component {
       books: [],
       show: false,
     }
+  }
+  
+  componentDidMount() {
+    this.getBooks();
   }
 
   handleModal =() => {
@@ -43,8 +45,7 @@ class BestBooks extends React.Component {
   handleDeleteBooks = async (id) => {
     try {
       let url = `${SERVER}/books/${id}`;
-      await axios.delete(id);
-      // this.getBooks();
+      await axios.delete(url);
       let updatedBooks =this.state.books.filter(books => books._id !== id);
       this.setState({
         books: updatedBooks
@@ -65,10 +66,6 @@ class BestBooks extends React.Component {
     } catch(error){
       console.log('We have an error: ', error.response.data)
     }
-  }
-  
-  componentDidMount() {
-    this.getBooks();
   }
 
   postBooks = async (books) => {
@@ -108,11 +105,13 @@ class BestBooks extends React.Component {
         {booksArr}
       </Carousel>
       <BookFormModal
+      handleAddBook={this.handleAddBook}
+      handleDeleteBooks={this.handleDeleteBooks}
       show={this.state.show}
       onHide={this.handleModal}
-      handleAddBook={this.handleAddBook}
       />
-      <Button onClick={this.handleModal} variant='outline-primary'>Add book</Button>{' '}
+      <Button onClick={this.handleModal} variant='outline-primary'>Add book</Button>
+      <Button onClick={this.handleDeleteBooks} type='submit' variant='outline-danger'>Delete</Button>
 
         <main>
           {

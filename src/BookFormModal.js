@@ -18,11 +18,11 @@ class BookFormModal extends React.Component {
           <Form.Group className='mb-3' controlId='checkBox'>
             <Form.Check type='checkbox' name='checkBox' label='Read' />
           </Form.Group>
-          <Button onClick={this.props.onHide} variant='primary' type='submit'>
+          <Button onClick={this.props.onHide} variant='outline-primary' type='submit'>
             Submit
           </Button>
-          <Button onClick={this.props.onHide} variant='primary' type='submit'>
-            Delete
+          <Button onClick={this.props.onHide} variant='outline-info' type='submit'>
+            Update
           </Button>
         </Form>
       </Modal>

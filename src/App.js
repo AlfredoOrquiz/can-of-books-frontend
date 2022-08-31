@@ -33,7 +33,6 @@ class App extends React.Component {
               element={<BestBooks />}
             >
             </Route>
-            {/* PLACEHOLDER: add a route with a path of '/about' that renders the `About` component */}
             <Route 
               exact path="/about"
               element={<About/>}
