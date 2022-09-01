@@ -14,8 +14,10 @@ class BestBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      book: {},
       books: [],
       show: false,
+      showUpdate: false,
     }
   }
 
@@ -29,9 +31,16 @@ class BestBooks extends React.Component {
     });
   }
 
-  handleUpdate = () => {
+  handleUpdate = (book) => {
     this.setState({
-      show: !this.state.show,
+      book: book,
+      showUpdate: true,
+    });
+  }
+
+  hideUpdate = () => {
+    this.setState({
+      showUpdate: false,
     });
   }
 
@@ -53,7 +62,6 @@ class BestBooks extends React.Component {
   }
 
   handleDeleteBooks = async (id) => {
-    console.log(id);
     try {
       let url = `${SERVER}/books/${id}`;
       await axios.delete(url);
@@ -72,13 +80,31 @@ class BestBooks extends React.Component {
       let updatedBooksfromDB = await axios.put(url, updatedBooks);
       let updatedBooksArr = this.state.books.map(existingBooks => {
         return existingBooks._id === updatedBooks._id
-          ? updatedBooksfromDB
-          : existingBooks
+
+        ? updatedBooksfromDB.data
+        : existingBooks
       });
-      this.setState({ books: updatedBooksArr });
+      this.setState({
+        books: updatedBooksArr,
+        showUpdate: false,
+      });
+
     } catch (err) {
       console.log('Houston, we have a problem: ', err.response.data);
     }
+  }
+  
+  handleSubmitUpdate = (e) => {
+    e.preventDefault();
+    let bookToUpdate = {
+      title: e.target.title.value || this.state.book.title,
+      description: e.target.description.value || this.state.book.description,
+      status: e.target.status.checked || this.state.book.status,
+      _id: this.state.book._id,
+      __v: this.state.book.__v,
+    }
+    console.log('bookToUpdate: ', bookToUpdate);
+    this.handleUpdateBooks(bookToUpdate);
   }
 
   getBooks = async () => {
@@ -108,6 +134,7 @@ class BestBooks extends React.Component {
   render() {
     let booksArr = this.state.books.map(book => {
       return <Carousel.Item key={book._id}>
+
         <img
           className="donQuijote"
           src={require('./Images/Don Quijote.png')}
@@ -139,18 +166,25 @@ class BestBooks extends React.Component {
 
     return (
       <div id='BestBooks'>
-        <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
-        <Carousel fade>
-          {booksArr}
-        </Carousel>
-        <BookFormModal
-          handleAddBook={this.handleAddBook}
-          show={this.state.show}
-          onHide={this.handleModal}
+
+      <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
+      <Carousel fade>
+        {booksArr}
+      </Carousel>
+      <BookFormModal
+      handleAddBook={this.handleAddBook}
+      show={this.state.show}
+      onHide={this.handleModal}
+      />
+      <BookUpdateModal
+        show={this.state.showUpdate}
+        handleSubmitUpdate={this.handleSubmitUpdate}
+        onHide={this.hideUpdate}
+        book={this.state.book}
         />
-        <Button onClick={this.handleModal} variant='outline-primary'>
-          <FontAwesomeIcon icon={faPlus} />
-        </Button>
+      <Button onClick={this.handleModal} variant='outline-primary'>
+        <FontAwesomeIcon icon={faPlus} />
+       </Button>
         <main>
           {
             this.state.books.length > 0 &&

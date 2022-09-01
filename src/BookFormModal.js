@@ -20,10 +20,6 @@ class BookFormModal extends React.Component {
             <Form.Control type='text' name='description' placeholder='Enter the description' />
           </Form.Group>
 
-          <Form.Group className='mb-3' controlId='status'>
-            <Form.Check type='checkbox' name='checkBox' label='Read' />
-          </Form.Group>
-
           <Button onClick={this.props.onHide} variant='outline-primary' type='submit'>
             <FontAwesomeIcon icon={faCheck} />
           </Button>
