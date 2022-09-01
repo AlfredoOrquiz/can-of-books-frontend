@@ -1,9 +1,10 @@
 import React from 'react';
-import {Button, Form, Modal} from 'react-bootstrap';
+import { Button, Form, Modal } from 'react-bootstrap';
 
 class BookUpdateModal extends React.Component {
   render() {
     return (
+
       <Modal
         show = {this.props.show}
         onHide = {this.props.onHide}>
@@ -16,6 +17,7 @@ class BookUpdateModal extends React.Component {
           <Form.Group className='mb-3' controlId='description'>
             <Form.Label>Description</Form.Label>
             <Form.Control type='text' name='description' placeholder='Enter the description' />
+
           </Form.Group>
 
           <Form.Group className='mb-3' controlId='status'>
@@ -30,7 +32,6 @@ class BookUpdateModal extends React.Component {
     )
   }
 }
-
 
 // <Form.Check type='checkbox' name='checkBox' label='Reading'/>
 // <Form.Check type='checkbox' name='checkBox' label='Finished'/>

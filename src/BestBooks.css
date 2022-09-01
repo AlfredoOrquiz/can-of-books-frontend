@@ -1,0 +1,17 @@
+#BestBooks {
+  margin: 1rem;
+  text-align: center;
+}
+
+.btn {
+  margin: 1rem;
+}
+
+.nav-link,
+.nav-link:visited {
+  color: white;
+}
+
+.modal-content {
+  padding: 1rem;
+}
