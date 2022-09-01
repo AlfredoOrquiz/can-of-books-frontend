@@ -44,8 +44,24 @@ Finish time: 2200
 
 Actual time needed to complete: 8 hrs and 30 min
 
+### Lab 13
+Name of feature: Update a resource
+
+Estimate of time needed to complete: 8 hrs
+
+Start time: 1400
+
+Finish time: 2100
+
+Actual time needed to complete: 7 hrs
+
 ## Credit and Collaborations
 Carlos Herrera
+Jordan Yamada
+Shane (TA)
+Sheyna
+David Tusia
+Jackson Gurney
 
 ### Logistical
 I will be available from 9 a.m. till midnight.
