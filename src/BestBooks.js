@@ -3,6 +3,7 @@ import axios from 'axios';
 import Button  from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
 import BookFormModal from './BookFormModal.js';
+import BookUpdateModal from './BookUpdateModal.js';
 
 let SERVER = process.env.REACT_APP_SERVER;
 
@@ -25,12 +26,17 @@ class BestBooks extends React.Component {
     });
   }
 
+  handleUpdate = () => {
+    this.setState({
+      show: !this.state.show,
+    });
+  }
+
   handleAddBook = async(e) => {
     e.preventDefault();
     let newBook = {
       title: e.target.title.value,
       description: e.target.description.value,
-      status: e.target.checkBox.checked ? 'available' : 'unavailable'
     }
 
     try {
@@ -52,11 +58,25 @@ class BestBooks extends React.Component {
         books: deletedBooks
       });
     } catch (error) {
-      console.log('Huston, we have another problem: ', error.response.data);
+      console.log('Huston, we have a problem: ', error.response.data);
     }
   }
 
-  /* TODO: Make a GET request to your API to fetch all the books from the database  */
+  handleUpdateBooks = async (updatedBooks) => {
+    try {
+      let url = `${SERVER}/books/${updatedBooks._id}`;
+      let updatedBooksfromDB = await axios.put(url, updatedBooks);
+      let updatedBooksArr = this.state.books.map(existingBooks => {
+        return existingBooks._id === updatedBooks._id
+        ? updatedBooksfromDB
+        : existingBooks
+      });
+      this.setState({books: updatedBooksArr});
+    } catch (err) {
+      console.log('Huston, we have a problem: ', err.response.data);
+    }
+  }
+
   getBooks = async () => {
     try {
       let results = await axios.get(`${SERVER}/books`);
@@ -93,11 +113,17 @@ class BestBooks extends React.Component {
             <h3>{book.title}</h3>
             <p>{book.description}</p>
             <p>{book.status}</p>
+
+            <BookUpdateModal
+              onShow={this.handleUpdate}/>
+            <Button onClick={this.handleUpdate}
+              type='submit'
+              variant='outline-info'>Update Book</Button>
+
             <Button onClick={() => {
               this.handleDeleteBooks(book._id)}}
               type='submit'
-              variant='outline-danger'>
-                Delete
+              variant='outline-danger'>Delete
             </Button>
           </Carousel.Caption>
         </Carousel.Item>
