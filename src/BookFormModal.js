@@ -23,9 +23,6 @@ class BookFormModal extends React.Component {
           <Button onClick={this.props.onHide} variant='outline-primary' type='submit'>
             Submit
           </Button>
-          <Button onClick={this.props.onHide} variant='outline-info' type='submit'>
-            Update
-          </Button>
         </Form>
       </Modal>
     )
